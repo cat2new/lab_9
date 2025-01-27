@@ -6,30 +6,11 @@ using System.Threading.Tasks;
 
 namespace lab_9
 {
-    public class Program
+    internal class Program
     {
-        //static int ReadInt(string message = " ") // проверка на правильность ввода числа
-        //{
-        //    bool isConvert;
-        //    int number;
-        //    do
-        //    {
-        //        Console.WriteLine(message);
-        //        isConvert = int.TryParse(Console.ReadLine(), out number);
-        //        if (!isConvert)
-        //        {
-        //            Console.WriteLine("Ошибка ввода! Пожалуйста, введите именно целое число!");
-        //        }
-        //    } while (!isConvert);
-        //    return number;
-        //}
-        //static bool CheckDiapason(int number, int min, int max) // проверка на принадлежность числа к заданному диапазону
-        //{
-        //    return number >= min && number <= max;
-        //}
         static void Main(string[] args)
         {
-            Mark mark1 = new Mark(); // заполнение конструктора без параметра
+            Mark mark1 = new Mark(); // замолнение конструктора без параметра
             mark1.Name = "Дисциплина 1";
             mark1.MarkValue = 1;
 
@@ -38,8 +19,8 @@ namespace lab_9
             // демонстрация
             Console.WriteLine("Созданные объекты: ");
             Console.WriteLine($"Дисциплина: {mark1.Name}, Оценка: {mark1.MarkValue} ({Mark.translateMark(mark1.MarkValue)})");
-            Data.Print(mark2);
-            Data.Print(mark3);
+            mark2.Print();
+            mark3.Print();
 
 
             // операции
@@ -55,11 +36,11 @@ namespace lab_9
             // демонстрация
             Console.WriteLine("\nПерегруженные операции: ");
             Console.WriteLine("Изменение регистра: ");
-            Data.Print(mark1);
+            mark1.Print();
             Console.WriteLine("Обнуление оценки: ");
-            Data.Print(mark2);
+            mark2.Print();
             Console.WriteLine("Замена названия дисциплины: ");
-            Data.Print(mark3);
+            mark3.Print();
             Console.WriteLine($"Длина названия дисциплины: {mLength} \n" +
                 $"Первая оценка > 2: {cMark}\n" +
                 $"Первая оценка < 2: {dMark}\n");
@@ -73,7 +54,14 @@ namespace lab_9
 
             Console.WriteLine("\nМассив с вводом с клавиатуры: ");
             MarkArray markArray2 = new MarkArray(2, false);
-            Data.Input(markArray2 );
+            for (int i = 0; i < markArray2.Length; i++)
+            {
+                Console.WriteLine($"Введите название дисциплины {i + 1}: ");
+                string name = Console.ReadLine();
+                Console.WriteLine($"Введите оценку по дисциплине {i + 1}: (от 0 до 10)");
+                int mark = int.Parse(Console.ReadLine());
+                markArray2[i] = new Mark(name, mark);
+            }
             markArray2.PrintArray();
             MarkArray markArray3 = new MarkArray(markArray); // копия
             Console.WriteLine("\nКопия массива: ");
@@ -95,10 +83,10 @@ namespace lab_9
             try
             {
                 Console.WriteLine("\nПолучение элемента с существующим индексом");
-                Data.Print(markArray[1]);
+                markArray[1].Print();
 
                 Console.WriteLine("\nПолучение элемента с несуществующим индексом");
-                Data.Print(markArray[100]);
+                markArray[100].Print();
             }
             catch (IndexOutOfRangeException ex)
             {
@@ -125,7 +113,7 @@ namespace lab_9
             {
                 if (markArray[i].MarkValue > average)
                 {
-                    Data.Print(markArray[i]);
+                    markArray[i].Print();
                 }
             }
         }
