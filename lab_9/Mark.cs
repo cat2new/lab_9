@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab_9
 {
-    internal class Mark
+    public class Mark
     {
         private int mark;
         private string name;
@@ -60,10 +60,7 @@ namespace lab_9
             else if (mark > 3 && mark < 6) return "Удовлетворительно";
             else return "Неудовлетворительно";
         }
-        public void Print() // вывод объекта
-        {
-            Console.WriteLine($"Дисциплина: {name}, Оценка: {mark} ({translateMark()})");
-        }
+       
         // унарные операции
         public static Mark operator !(Mark m) // изиенение названия дисциплины (перегрузка)
         {
@@ -101,10 +98,27 @@ namespace lab_9
             if (m1.mark <= m2.mark) return true;
             else return false;
         }
+
+        public static bool operator ==(Mark left, Mark right)
+        {
+            return EqualityComparer<Mark>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(Mark left, Mark right)
+        {
+            return !(left == right);
+        }
+
         public static int getObjectCount()
         {
             return objectCount;
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Mark mark &&
+                   Name == mark.Name &&
+                   MarkValue == mark.MarkValue;
+        }
     }
 }
