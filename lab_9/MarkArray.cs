@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace lab_9
 {
-    internal class MarkArray
+    public class MarkArray
     {
         Mark[] marks;
         private static int CollectionCount = 0; // счетчик коллекций
@@ -39,9 +39,9 @@ namespace lab_9
         public void PrintArray()// печать
         {
 
-            foreach (var mark in marks)
+            foreach (Mark mark in marks)
             {
-                mark.Print();
+                Data.Print(mark);
             }
         }
         public int Length
