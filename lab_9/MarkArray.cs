@@ -48,11 +48,11 @@ namespace lab_9
         {
             get { return marks.Length; }
         }
-        public Mark this[int index] 
+        public Mark this[int index]
         {
             get
             {
-                if  (index<0 || index >= marks.Length)
+                if (index < 0 || index >= marks.Length)
                     throw new IndexOutOfRangeException("Индекс вне диапазона!");
                 return marks[index];
             }

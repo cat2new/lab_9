@@ -8,25 +8,6 @@ namespace lab_9
 {
     public class Program
     {
-        //static int ReadInt(string message = " ") // проверка на правильность ввода числа
-        //{
-        //    bool isConvert;
-        //    int number;
-        //    do
-        //    {
-        //        Console.WriteLine(message);
-        //        isConvert = int.TryParse(Console.ReadLine(), out number);
-        //        if (!isConvert)
-        //        {
-        //            Console.WriteLine("Ошибка ввода! Пожалуйста, введите именно целое число!");
-        //        }
-        //    } while (!isConvert);
-        //    return number;
-        //}
-        //static bool CheckDiapason(int number, int min, int max) // проверка на принадлежность числа к заданному диапазону
-        //{
-        //    return number >= min && number <= max;
-        //}
         static void Main(string[] args)
         {
             Mark mark1 = new Mark(); // заполнение конструктора без параметра
@@ -61,8 +42,8 @@ namespace lab_9
             Console.WriteLine("Замена названия дисциплины: ");
             Data.Print(mark3);
             Console.WriteLine($"Длина названия дисциплины: {mLength} \n" +
-                $"Первая оценка > 2: {cMark}\n" +
-                $"Первая оценка < 2: {dMark}\n");
+                $"Первая оценка больше второй оценки: {cMark}\n" +
+                $"Первая оценка меньше второй оценки: {dMark}\n");
             Console.WriteLine("");
             Console.WriteLine($"Количество созданных объектов: {Mark.getObjectCount()}\n");
 
@@ -73,7 +54,7 @@ namespace lab_9
 
             Console.WriteLine("\nМассив с вводом с клавиатуры: ");
             MarkArray markArray2 = new MarkArray(2, false);
-            Data.Input(markArray2 );
+            Data.Input(markArray2);
             markArray2.PrintArray();
             MarkArray markArray3 = new MarkArray(markArray); // копия
             Console.WriteLine("\nКопия массива: ");
@@ -110,23 +91,39 @@ namespace lab_9
             Console.ReadLine();
         }
         // уточнить про операции, что негде использовать
-        static void FindAboveAverage(MarkArray markArray)
+
+        public static void FindAboveAverage(MarkArray markArray)
         {
+            if (markArray.Length == 0)
+            {
+                Console.WriteLine("Массив пуст");
+                return;
+            }
+
             double average = 0;
-            for (int i=0; i < markArray.Length; i++)
+            for (int i = 0; i < markArray.Length; i++)
             {
                 average += markArray[i].MarkValue;
             }
-            average /= markArray.Length; // уточнить про среднюю оценку, округление
-            Console.WriteLine($"\nСредняя оценка: {average:F2}");
-            Console.WriteLine("Дисциплиы с оценкой выше средней: ");
+            average /= markArray.Length;
+            average = Math.Round(average, 2); 
 
-            for (int i = 0;  i < markArray.Length; i++)
+            Console.WriteLine($"\nСредняя оценка: {average:F2}");
+            Console.WriteLine("Дисциплины с оценкой выше средней: ");
+
+            bool hasAboveAverage = false; 
+            for (int i = 0; i < markArray.Length; i++)
             {
                 if (markArray[i].MarkValue > average)
                 {
                     Data.Print(markArray[i]);
+                    hasAboveAverage = true; 
                 }
+            }
+
+            if (!hasAboveAverage)
+            {
+                Console.WriteLine("Нет дисциплин с оценкой выше средней");
             }
         }
     }

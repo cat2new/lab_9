@@ -18,12 +18,12 @@ namespace lab_9
             this.name = "";
             objectCount++;
         }
-        public Mark(string name, int mark ) // конструктор с параметром
+        public Mark(string name, int mark) // конструктор с параметром
         {
             this.mark = mark;
             this.name = name;
             objectCount++;
-        }   
+        }
         public Mark(Mark obj) // конструктор копий
         {
             this.name = obj.name;
@@ -43,7 +43,7 @@ namespace lab_9
                 if (value >= 0 && value <= 10)
                     mark = value;
                 else
-                    throw new Exception("Оценка доожна быть в диапазоне от 0 до 10!"); // вывод ошибки 
+                    throw new Exception("Оценка должна быть в диапазоне от 0 до 10!"); // вывод ошибки 
             }
         }
         public string translateMark() // метод перевода оценки, относится к объектам
@@ -60,7 +60,7 @@ namespace lab_9
             else if (mark > 3 && mark < 6) return "Удовлетворительно";
             else return "Неудовлетворительно";
         }
-       
+
         // унарные операции
         public static Mark operator !(Mark m) // изиенение названия дисциплины (перегрузка)
         {
@@ -80,7 +80,7 @@ namespace lab_9
         public static implicit operator bool(Mark m) // оценка 4 или больше (неявная)
         {
             if (m.mark >= 4) return true;
-            else return false;  
+            else return false;
         }
         // бинарные операции
         public static Mark operator /(Mark m, string newName) // замена названия дисциплины другим
