@@ -128,14 +128,14 @@ namespace UnitTestProject1
         {
             // Arrange
             MarkArray markArray = new MarkArray(5, true);
-            int initialCount = MarkArray.getCollectionCount();
+            int initialCount = MarkArray.GetCollectionCount();
 
             // Act
             MarkArray markArray1 = new MarkArray(5, true);
 
 
             // Assert
-            Assert.AreEqual(++initialCount, MarkArray.getCollectionCount());
+            Assert.AreEqual(++initialCount, MarkArray.GetCollectionCount());
         }
 
         [TestMethod]
@@ -143,13 +143,13 @@ namespace UnitTestProject1
         {
             // Arrange
             MarkArray markArray = new MarkArray(5, true);
-            int initialCount = MarkArray.getCollectionCount();
+            int initialCount = MarkArray.GetCollectionCount();
 
             // Act        
             MarkArray markArray2 = new MarkArray(5, false);
 
             // Assert
-            Assert.AreEqual(initialCount, MarkArray.getCollectionCount());
+            Assert.AreEqual(initialCount, MarkArray.GetCollectionCount());
         }
 
     }

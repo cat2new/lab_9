@@ -10,9 +10,8 @@ namespace lab_9
     public class MarkArray
     {
         Mark[] marks;
-        private static int CollectionCount = 0; // счетчик коллекций
-
-        public MarkArray() { marks = new Mark[0]; CollectionCount++; } // коструктор без параметров
+        private static int сollectionCount = 0; 
+        public MarkArray() { marks = new Mark[0]; сollectionCount++; } // коструктор без параметров
         public MarkArray(int size, bool input) // коструктор с параметром
         {
             if (input)
@@ -23,20 +22,20 @@ namespace lab_9
                 {
                     marks[i] = new Mark($"Дисциплина {i + 1}", random.Next(0, 11));
                 }
-                CollectionCount++;
+                сollectionCount++;
             }
             else marks = new Mark[size];
         }
-        public MarkArray(MarkArray obj) // копии
+        public MarkArray(MarkArray obj) 
         {
             marks = new Mark[obj.marks.Length];
             for (int i = 0; i < obj.marks.Length; i++)
             {
                 marks[i] = new Mark(obj.marks[i]);
             }
-            CollectionCount++;
+            сollectionCount++;
         }
-        public void PrintArray()// печать
+        public void PrintArray()
         {
 
             foreach (Mark mark in marks)
@@ -63,9 +62,9 @@ namespace lab_9
                 marks[index] = value;
             }
         }
-        public static int getCollectionCount()
+        public static int GetCollectionCount()
         {
-            return CollectionCount;
+            return сollectionCount;
         }
 
     }

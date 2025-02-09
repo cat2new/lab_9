@@ -30,12 +30,12 @@ namespace lab_9
             this.mark = obj.mark;
             objectCount++;
         }
-        public string Name // свойство 
+        public string Name  
         {
-            get { return name; } // возврат в программу
-            set { name = value; } // запись в объект
+            get { return name; } 
+            set { name = value; } 
         }
-        public int MarkValue // свойство оценки
+        public int MarkValue 
         {
             get { return mark; }
             set
@@ -43,17 +43,17 @@ namespace lab_9
                 if (value >= 0 && value <= 10)
                     mark = value;
                 else
-                    throw new Exception("Оценка должна быть в диапазоне от 0 до 10!"); // вывод ошибки 
+                    throw new Exception("Оценка должна быть в диапазоне от 0 до 10!"); 
             }
         }
-        public string translateMark() // метод перевода оценки, относится к объектам
+        public string TranslateMark() 
         {
             if (mark > 7) return "Отлично";
             else if (mark > 5 && mark < 8) return "Хорошо";
             else if (mark > 3 && mark < 6) return "Удовлетворительно";
             else return "Неудовлетворительно";
         }
-        public static string translateMark(int mark) // статичная функция, обращаемся к классу
+        public static string TranslateMark(int mark) 
         {
             if (mark > 7) return "Отлично";
             else if (mark > 5 && mark < 8) return "Хорошо";
@@ -109,7 +109,7 @@ namespace lab_9
             return !(left == right);
         }
 
-        public static int getObjectCount()
+        public static int GetObjectCount()
         {
             return objectCount;
         }

@@ -18,7 +18,7 @@ namespace lab_9
             Mark mark3 = new Mark(mark1); // заполнение контруктора копий
             // демонстрация
             Console.WriteLine("Созданные объекты: ");
-            Console.WriteLine($"Дисциплина: {mark1.Name}, Оценка: {mark1.MarkValue} ({Mark.translateMark(mark1.MarkValue)})");
+            Console.WriteLine($"Дисциплина: {mark1.Name}, Оценка: {mark1.MarkValue} ({Mark.TranslateMark(mark1.MarkValue)})");
             Data.Print(mark2);
             Data.Print(mark3);
 
@@ -45,7 +45,7 @@ namespace lab_9
                 $"Первая оценка больше второй оценки: {cMark}\n" +
                 $"Первая оценка меньше второй оценки: {dMark}\n");
             Console.WriteLine("");
-            Console.WriteLine($"Количество созданных объектов: {Mark.getObjectCount()}\n");
+            Console.WriteLine($"Количество созданных объектов: {Mark.GetObjectCount()}\n");
 
             // создание коллекций
             MarkArray markArray = new MarkArray(5, true);
@@ -86,11 +86,11 @@ namespace lab_9
                 Console.WriteLine($"Ошибка! {ex.Message}");
             }
             FindAboveAverage(markArray); // поиск в коллекции
-            Console.WriteLine($"\nКоличество созданных объектов: {Mark.getObjectCount()}");
-            Console.WriteLine($"Количество созданных объектов: {MarkArray.getCollectionCount()}");
+            Console.WriteLine($"\nКоличество созданных объектов: {Mark.GetObjectCount()}");
+            Console.WriteLine($"Количество созданных объектов: {MarkArray.GetCollectionCount()}");
             Console.ReadLine();
         }
-        // уточнить про операции, что негде использовать
+        
 
         public static void FindAboveAverage(MarkArray markArray)
         {
@@ -128,4 +128,3 @@ namespace lab_9
         }
     }
 }
-// спросить: добавить выбор формирования массива

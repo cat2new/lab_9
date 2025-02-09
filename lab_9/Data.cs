@@ -26,7 +26,7 @@ namespace lab_9
         }
         public static void Print(Mark mark) // вывод объекта
         {
-            Console.WriteLine($"Дисциплина: {mark.Name}, Оценка: {mark.MarkValue} ({Mark.translateMark(mark.MarkValue)})");
+            Console.WriteLine($"Дисциплина: {mark.Name}, Оценка: {mark.MarkValue} ({Mark.TranslateMark(mark.MarkValue)})");
         }
         public static void Input(MarkArray markArray)
         {
